@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wang dan Rasa Puas Hati</title>
+<style>
+:root{color-scheme:light dark;--bg:#f7f5ef;--card:#fff;--ink:#1d2433;--muted:#5d667a;--line:#e3e0d6;--accent:#0b7a6b;--accent-ink:#fff;--soft:#e6f3f0;--warn:#b4541a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161d;--card:#1b212b;--ink:#eceef3;--muted:#a3adbf;--line:#2c3441;--accent:#3cc2ab;--accent-ink:#06201b;--soft:#173229;--warn:#e8985f}}
+:root[data-theme="dark"]{--bg:#12161d;--card:#1b212b;--ink:#eceef3;--muted:#a3adbf;--line:#2c3441;--accent:#3cc2ab;--accent-ink:#06201b;--soft:#173229;--warn:#e8985f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:20px 16px 40px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.brand{font-weight:700;font-size:15px;color:var(--muted)}
+.lang button{font:inherit;font-size:13px;padding:5px 11px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.lang button:first-child{border-radius:8px 0 0 8px}.lang button:last-child{border-radius:0 8px 8px 0;border-left:0}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px}
+h1{font-size:28px;line-height:1.2;margin:0 0 12px}
+h2{font-size:21px;line-height:1.3;margin:0 0 6px;outline:none}
+h3{font-size:16px;margin:22px 0 8px}
+p{margin:0 0 12px}.muted{color:var(--muted);font-size:14px}
+.prog{height:6px;background:var(--line);border-radius:6px;margin-bottom:18px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.hint{font-size:14px;color:var(--muted);margin-bottom:16px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+@media(min-width:560px){.scale{grid-template-columns:repeat(10,1fr)}}
+.opt,.scale button{font:inherit;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:12px 0;cursor:pointer;font-weight:600}
+.opt{display:block;width:100%;text-align:left;padding:13px 14px;margin-bottom:8px;font-weight:500}
+.scale button[aria-pressed="true"],.opt[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.ends{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);margin-top:8px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.btn{font:inherit;font-weight:600;padding:11px 20px;border-radius:10px;border:1.5px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+:is(button):focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.row{display:grid;grid-template-columns:130px 1fr 44px;align-items:center;gap:10px;margin:9px 0;font-size:15px}
+.bar{height:12px;background:var(--line);border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);border-radius:8px}
+.row b{text-align:right}
+.ins{background:var(--soft);border-radius:12px;padding:14px 16px;margin:12px 0}
+.ins strong{display:block;margin-bottom:2px}
+.tag{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--warn)}
+dl{margin:0}dt{font-weight:700;margin-top:10px}dd{margin:2px 0 0;color:var(--muted);font-size:14.5px}
+footer{margin-top:18px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.chip{padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);font-weight:700;font-size:14px}.chip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+</style>
+</head>
+<body>
+<main>
+  <header><div class="brand">💭 Wang dan Rasa Puas Hati</div>
+    <div class="lang" role="group" aria-label="Bahasa / Language">
+      <button id="l-ms" aria-pressed="true">BM</button><button id="l-en" aria-pressed="false">EN</button>
+    </div></header>
+  <div id="app"></div>
+</main>
+<script>
+const T={
+ms:{title:"Wang dan Rasa Puas Hati",
+intro:"Adakah lebih banyak wang membawa lebih banyak kepuasan? Jawab 8 soalan ringkas yang disesuaikan daripada World Values Survey, kemudian lihat bagaimana kepuasan hidup, kepuasan kewangan dan kelas pendapatan anda (B40, M40 atau T20) berkait.",
+priv:"Tiada jawapan dihantar atau disimpan. Semuanya hanya wujud dalam pelayar anda sehingga anda tutup halaman.",
+start:"Mula",next:"Seterusnya",back:"Kembali",see:"Lihat keputusan",again:"Mula semula",of:"Soalan",
+q:{life:{q:"Secara keseluruhannya, setakat mana anda berpuas hati dengan kehidupan anda pada hari ini?",h:"Pilih satu nombor.",lo:"1 = Sama sekali tidak berpuas hati",hi:"10 = Sangat berpuas hati"},
+fin:{q:"Setakat mana anda berpuas hati dengan keadaan kewangan isi rumah anda?",h:"Pilih satu nombor.",lo:"1 = Sama sekali tidak berpuas hati",hi:"10 = Sangat berpuas hati"},
+income:{q:"Di manakah isi rumah anda pada skala pendapatan negara?",h:"1 ialah kumpulan pendapatan paling rendah dan 10 kumpulan paling tinggi di negara anda. Kira semua gaji, pencen dan pendapatan lain.",lo:"1 = Kumpulan terendah",hi:"10 = Kumpulan tertinggi"},
+happy:{q:"Secara keseluruhannya, adakah anda berasa:",h:"Pilih satu jawapan.",o:["Sangat gembira","Agak gembira","Kurang gembira","Tidak gembira langsung"]},control:{q:"Sesetengah orang rasa mereka mempunyai pilihan dan kawalan sepenuhnya ke atas hidup mereka, manakala yang lain rasa tindakan mereka tiada kesan sebenar. Setakat mana anda rasa mempunyai kebebasan memilih dan kawalan ke atas hala tuju hidup anda?",h:"Pilih satu nombor.",lo:"1 = Tiada langsung",hi:"10 = Sangat banyak"},food:{q:"Dalam 12 bulan lepas, seberapa kerap anda atau keluarga anda kekurangan makanan yang cukup?",h:"Pilih satu jawapan.",o:["Kerap","Kadang-kadang","Jarang","Tidak pernah"]},med:{q:"Dalam 12 bulan lepas, seberapa kerap anda atau keluarga anda tidak mendapat ubat atau rawatan perubatan yang diperlukan?",h:"Pilih satu jawapan.",o:["Kerap","Kadang-kadang","Jarang","Tidak pernah"]},hh:{q:"Berapakah anggaran jumlah pendapatan kasar bulanan isi rumah anda?",h:"Kira gaji, pendapatan perniagaan dan sumber lain semua ahli isi rumah sebelum cukai. Soalan ini bukan daripada WVS; ia digunakan untuk menentukan kelas B40, M40 atau T20.",o:["Bawah RM2,500","RM2,500 – RM3,999","RM4,000 – RM5,859","RM5,860 – RM8,999","RM9,000 – RM12,679","RM12,680 – RM17,999","RM18,000 ke atas"]}},
+res:"Keputusan anda",ctl:"Rasa kawalan",clsT:"Kelas pendapatan (B40, M40, T20)",clsA:"Mengikut pendapatan isi rumah",clsP:"Mengikut tempat yang anda rasa",ck:{eq:["Rasa dan kelas sebenar sepadan","Anda meletakkan diri dalam kumpulan yang sama dengan kelas pendapatan sebenar isi rumah anda."],low:["Anda meletakkan diri lebih rendah daripada kelas sebenar","Anda merasakan isi rumah anda berada lebih rendah berbanding kelas pendapatan sebenar. Ini boleh berlaku jika anda membandingkan diri dengan kumpulan yang lebih kaya, atau kos sara hidup di kawasan anda tinggi."],high:["Anda meletakkan diri lebih tinggi daripada kelas sebenar","Anda merasakan isi rumah anda berada lebih tinggi berbanding kelas pendapatan sebenar. Ini boleh berlaku jika anda membandingkan diri dengan orang sekeliling yang kurang berada."]},clsN:"Kelas dikira daripada pendapatan kasar bulanan isi rumah menggunakan ambang kebangsaan DOSM (Household Income Survey 2024): B40 di bawah RM5,860, M40 RM5,860 hingga RM12,679, T20 RM12,680 dan ke atas. Skala 1 hingga 10 dipadankan secara kasar: 1–4 = B40, 5–8 = M40, 9–10 = T20. Ambang berbeza mengikut negeri dan tidak mengambil kira saiz isi rumah atau kos sara hidup.",sc:["Kekurangan dalam 12 bulan lepas","Anda melaporkan pernah kekurangan makanan atau ubat. Kajian scarcity dalam behavioral economics mencadangkan tekanan kekurangan boleh menarik banyak perhatian dan menyukarkan keputusan jangka panjang."],lab:{life:"Kepuasan hidup",fin:"Kepuasan kewangan",income:"Kedudukan pendapatan"},happyLab:"Kegembiraan",
+note:"Pemerhatian ini hanya berdasarkan jawapan anda dan bersifat refleksi, bukan diagnosis.",
+gap:{pos:["Kewangan lebih memuaskan daripada kedudukan pendapatan","Kepuasan kewangan anda lebih tinggi daripada kedudukan pendapatan anda. Ini boleh berlaku jika jangkaan anda sederhana atau anda membandingkan diri dengan orang yang kurang berada."],
+neg:["Kewangan kurang memuaskan berbanding kedudukan pendapatan","Kepuasan kewangan anda lebih rendah daripada kedudukan pendapatan anda. Ini boleh berlaku jika jangkaan anda tinggi atau anda membandingkan diri dengan orang yang lebih berjaya."],
+eq:["Rasa dan kedudukan seiring","Kepuasan kewangan anda selari dengan kedudukan pendapatan anda."]},
+lf:{pos:["Hidup lebih memuaskan daripada kewangan","Kepuasan hidup anda lebih tinggi daripada kepuasan kewangan. Faktor selain wang, seperti keluarga, kesihatan dan hubungan, mungkin memainkan peranan besar."],
+neg:["Hidup kurang memuaskan daripada kewangan","Kepuasan hidup anda lebih rendah daripada kepuasan kewangan. Mungkin wang bukan punca utama, dan ada faktor lain yang mempengaruhi."],
+eq:["Hidup dan kewangan seiring","Kepuasan hidup dan kepuasan kewangan anda hampir sama, jadi keadaan kewangan mungkin berkait rapat dengan rasa puas hati anda."]},
+cTitle:"Konsep behavioral economics di sebalik ini",
+c:[["Reference dependence","Kita menilai keadaan kita berbanding satu titik rujukan (jangkaan atau keadaan lalu), bukan hanya jumlah mutlak."],
+["Relative income","Kedudukan pendapatan berbanding orang lain boleh mempengaruhi kepuasan, bukan hanya jumlah ringgit."],
+["Hedonic adaptation","Kita cenderung menyesuaikan diri dengan peningkatan pendapatan, jadi kesan kepada kepuasan boleh pudar."],
+["Easterlin paradox","Dalam satu negara, orang yang lebih kaya cenderung lebih gembira, tetapi kegembiraan negara tidak semestinya meningkat bersama pendapatan. Ini masih diperdebatkan dalam kajian."],["Scarcity","Apabila wang atau sumber terhad, perhatian kita tertumpu pada kekurangan itu, dan ini boleh menjejaskan keputusan lain, terutamanya yang jangka panjang."]],
+src:"Soalan disesuaikan daripada World Values Survey Wave 7 (2017–2022). Ini alat pembelajaran, bukan ujian psikologi atau nasihat kewangan."},
+en:{title:"Money and Satisfaction",
+intro:"Does more money bring more satisfaction? Answer 8 short questions adapted from the World Values Survey, then see how your life satisfaction, financial satisfaction and income class (B40, M40 or T20) relate.",
+priv:"No answers are sent or saved. Everything stays in your browser until you close the page.",
+start:"Start",next:"Next",back:"Back",see:"See results",again:"Start again",of:"Question",
+q:{life:{q:"All things considered, how satisfied are you with your life as a whole these days?",h:"Choose one number.",lo:"1 = Completely dissatisfied",hi:"10 = Completely satisfied"},
+fin:{q:"How satisfied are you with the financial situation of your household?",h:"Choose one number.",lo:"1 = Completely dissatisfied",hi:"10 = Completely satisfied"},
+income:{q:"Where does your household sit on your country’s income scale?",h:"1 is the lowest income group and 10 the highest in your country. Count all wages, pensions and other income.",lo:"1 = Lowest group",hi:"10 = Highest group"},
+happy:{q:"Taking all things together, would you say you are:",h:"Choose one answer.",o:["Very happy","Quite happy","Not very happy","Not at all happy"]},control:{q:"Some people feel they have completely free choice and control over their lives, while others feel that what they do has no real effect on what happens to them. How much freedom of choice and control do you feel you have over the way your life turns out?",h:"Choose one number.",lo:"1 = None at all",hi:"10 = A great deal"},food:{q:"In the last 12 months, how often have you or your family gone without enough food to eat?",h:"Choose one answer.",o:["Often","Sometimes","Rarely","Never"]},med:{q:"In the last 12 months, how often have you or your family gone without medicine or medical treatment that you needed?",h:"Choose one answer.",o:["Often","Sometimes","Rarely","Never"]},hh:{q:"Roughly what is your household’s total monthly gross income?",h:"Count the pre-tax wages, business income and other income of everyone in the household. This is not a WVS question; it is used to work out B40, M40 or T20.",o:["Below RM2,500","RM2,500 – RM3,999","RM4,000 – RM5,859","RM5,860 – RM8,999","RM9,000 – RM12,679","RM12,680 – RM17,999","RM18,000 and above"]}},
+res:"Your results",ctl:"Sense of control",clsT:"Income class (B40, M40, T20)",clsA:"By your household income",clsP:"Where you feel you sit",ck:{eq:["Feeling and actual class match","You placed yourself in the same group as your household’s actual income class."],low:["You placed yourself lower than your actual class","You feel your household sits lower than its actual income class. This can happen when you compare yourself with richer groups, or when the cost of living where you are is high."],high:["You placed yourself higher than your actual class","You feel your household sits higher than its actual income class. This can happen when you compare yourself with people around you who are less well off."]},clsN:"The class is worked out from monthly gross household income using DOSM’s national thresholds (Household Income Survey 2024): B40 below RM5,860, M40 RM5,860 to RM12,679, T20 RM12,680 and above. The 1 to 10 scale is mapped roughly: 1–4 = B40, 5–8 = M40, 9–10 = T20. Thresholds differ by state and do not account for household size or cost of living.",sc:["Going without in the last 12 months","You reported going without food or medicine at times. Research on scarcity in behavioral economics suggests that the pressure of shortage can absorb a lot of attention and make long-term decisions harder."],lab:{life:"Life satisfaction",fin:"Financial satisfaction",income:"Income position"},happyLab:"Happiness",
+note:"These observations are based only on your answers and are meant for reflection, not diagnosis.",
+gap:{pos:["Finances feel better than your income position","Your financial satisfaction is higher than your income position. This can happen when your expectations are modest or you compare yourself with people who are less well off."],
+neg:["Finances feel worse than your income position","Your financial satisfaction is lower than your income position. This can happen when your expectations are high or you compare yourself with people who are doing better."],
+eq:["Feeling and position match","Your financial satisfaction is in line with your income position."]},
+lf:{pos:["Life feels better than your finances","Your life satisfaction is higher than your financial satisfaction. Things beyond money, such as family, health and relationships, may play a big part."],
+neg:["Life feels worse than your finances","Your life satisfaction is lower than your financial satisfaction. Money may not be the main issue, and other factors may be at work."],
+eq:["Life and finances move together","Your life satisfaction and financial satisfaction are close, so your finances may be closely tied to how satisfied you feel."]},
+cTitle:"The behavioral economics behind this",
+c:[["Reference dependence","We judge our situation against a reference point (expectations or our past), not only the absolute amount."],
+["Relative income","Our income position compared with others can affect satisfaction, not just the amount of money."],
+["Hedonic adaptation","We tend to adapt to higher income, so the boost to satisfaction can fade."],
+["Easterlin paradox","Within a country richer people tend to be happier, yet national happiness does not always rise with national income. This is still debated in the research."],["Scarcity","When money or resources are tight, our attention narrows onto the shortfall, which can affect other decisions, especially long-term ones."]],
+src:"Questions adapted from the World Values Survey Wave 7 (2017–2022). This is a learning tool, not a psychological test or financial advice."}};
+let lang="ms",step=0,shown=-1;const ans={};const Q=["life","fin","income","happy","control","food","med","hh"];
+const $=s=>document.querySelector(s),app=$("#app");
+function bar(l,v,max){return `<div class="row"><span>${l}</span><div class="bar"><i style="width:${v/max*100}%"></i></div><b>${v}/${max}</b></div>`}
+function level(d){return d>=2?"pos":d<=-2?"neg":"eq"}
+const CL=["B40","M40","T20"];
+function actualClass(v){return v<=3?0:v<=5?1:2}
+function perceivedClass(n){return n<=4?0:n<=8?1:2}
+function render(){const t=T[lang];document.documentElement.lang=lang;document.title=t.title;let h="";
+if(step===0){h=`<div class="card"><h1>${t.title}</h1><p>${t.intro}</p><p class="muted">${t.priv}</p><div class="nav"><span></span><button class="btn" id="go">${t.start}</button></div></div>`}
+else if(step<=8){const k=Q[step-1],q=t.q[k];let body="";
+if(q.o){body=q.o.map((o,i)=>{const v=k==="happy"?4-i:i+1;return `<button class="opt" data-v="${v}" aria-pressed="${ans[k]===v}">${o}</button>`}).join("")}
+else{body=`<div class="scale">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button data-v="${n}" aria-pressed="${ans[k]===n}">${n}</button>`).join("")}</div><div class="ends"><span>${q.lo}</span><span style="text-align:right">${q.hi}</span></div>`}
+h=`<div class="prog" aria-hidden="true"><i style="width:${(step-1)/8*100}%"></i></div><div class="card"><p class="muted">${t.of} ${step}/8</p><h2 id="hd" tabindex="-1">${q.q}</h2><p class="hint">${q.h}</p>${body}<div class="nav"><button class="btn ghost" id="bk">${t.back}</button><button class="btn" id="nx" ${ans[k]?"":"disabled"}>${step===8?t.see:t.next}</button></div></div>`}
+else{const g=t.gap[level(ans.fin-ans.income)],l=t.lf[level(ans.life-ans.fin)];
+const ac=actualClass(ans.hh),pc=perceivedClass(ans.income),cd=pc-ac,ck=t.ck[cd===0?"eq":cd<0?"low":"high"],sc=ans.food<=2||ans.med<=2;
+h=`<div class="card"><h2 id="hd" tabindex="-1">${t.res}</h2>${bar(t.lab.life,ans.life,10)}${bar(t.lab.fin,ans.fin,10)}${bar(t.lab.income,ans.income,10)}${bar(t.happyLab,ans.happy,4)}${bar(t.ctl,ans.control,10)}
+<h3>${t.clsT}</h3><div class="chips">${CL.map((c,i)=>`<span class="chip${i===ac?" on":""}">${c}</span>`).join("")}</div><p>${t.clsA}: <b>${CL[ac]}</b><br>${t.clsP}: <b>${CL[pc]}</b> (${ans.income}/10)</p><div class="ins"><strong>${ck[0]}</strong>${ck[1]}</div><p class="muted">${t.clsN}</p><div class="ins"><strong>${g[0]}</strong>${g[1]}</div><div class="ins"><strong>${l[0]}</strong>${l[1]}</div>${sc?`<div class="ins"><strong>${t.sc[0]}</strong>${t.sc[1]}</div>`:""}<p class="muted">${t.note}</p>
+<h3>${t.cTitle}</h3><dl>${t.c.map(c=>`<dt>${c[0]}</dt><dd>${c[1]}</dd>`).join("")}</dl>
+<div class="nav"><button class="btn ghost" id="bk">${t.back}</button><button class="btn" id="re">${t.again}</button></div></div>`}
+app.innerHTML=h+(step?`<footer class="muted">${t.src}</footer>`:"");
+$("#l-ms").setAttribute("aria-pressed",lang==="ms");$("#l-en").setAttribute("aria-pressed",lang==="en");
+const hd=$("#hd");if(hd&&step&&shown!==step)hd.focus({preventScroll:true});shown=step}
+app.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+if(b.id==="go"||b.id==="nx"){step++;render()}
+else if(b.id==="bk"){step--;render()}
+else if(b.id==="re"){for(const k in ans)delete ans[k];step=0;render()}
+else if(b.dataset.v){ans[Q[step-1]]=+b.dataset.v;render()}});
+$("#l-ms").onclick=()=>{lang="ms";render()};$("#l-en").onclick=()=>{lang="en";render()};
+render();
+</script>
+</body>
+</html>
